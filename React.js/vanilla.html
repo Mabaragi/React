@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <!-- 리액트 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <!-- 리액트 돔 -->
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    let counter = 0;
+    const countUp = () => {
+      counter += 1;
+      console.log(counter);
+      render();
+    };
+    const render = () => {};
+    const root = document.querySelector("#root");
+    const App = () => {
+      const [counter, setCounter] = React.useState(1); // 1과 그 값에 관련된 modifier 함수를 같이 가져온다.
+      const onClick = () => {
+        // setCounter(counter + 1); // 자동으로 리렌더링 해준다.
+        setCounter((current) => current + 1);
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    };
+    // ReactDOM.render(span, root) // html에 올려 놓는 메서드
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
