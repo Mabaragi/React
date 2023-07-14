@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 
-const InputPassword = () => {
+const InputPassword = ({onInputChange}) => {
   const [text, setText] = useState('');
   const reset = () => {
     setText('');
+  };
+  const handleTextChange = text => {
+    onInputChange(text);
+    setText();
   };
   return (
     <View style={styles.inputContainer}>
@@ -12,11 +16,12 @@ const InputPassword = () => {
         비밀번호
       </Text>
       <TextInput
+        secureTextEntry={true}
         style={styles.inputBox}
         color={'black'}
         placeholder="비밀번호를 입력하세요"
         value={text}
-        onChangeText={setText}
+        onChangeText={handleTextChange}
       />
     </View>
   );

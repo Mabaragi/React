@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 
-const InputID = () => {
+const InputId = ({onInputChange}) => {
   const [text, setText] = useState('');
   const reset = () => {
     setText('');
+  };
+  const handleTextChange = text => {
+    setText(text);
+    onInputChange(text);
   };
   return (
     <View style={styles.inputContainer}>
@@ -16,7 +20,7 @@ const InputID = () => {
         color={'black'}
         placeholder="아이디를 입력하세요"
         value={text}
-        onChangeText={setText}
+        onChangeText={handleTextChange}
       />
     </View>
   );
@@ -40,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputID;
+export default InputId;

@@ -1,3 +1,5 @@
+// 텍스트, 색상, 크기, 이벤트 조절 가능한 버튼. 스타일은 margin만 조절
+
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
